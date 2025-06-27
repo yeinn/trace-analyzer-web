@@ -1,0 +1,10 @@
+### 모든 URL 가져오기
+GET http://localhost:4000/urls
+
+### URL 등록
+POST http://localhost:4000/urls
+Content-Type: application/json
+
+{
+  "url": "https://example.com"
+}
