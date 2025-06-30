@@ -12,10 +12,11 @@ const urls: UrlEntry[] = []
 export const urlsRoutes = async (server: FastifyInstance) => {
   server.get('/urls', async () => { return urls })
 
-  server.post('/urls', async (req, reply) => {
+  server.post('/urls/create', async (req, reply) => {
     const body = req.body as { url?: string, urlAlias: string }
     const url = body?.url?.trim()
     const urlAlias = body?.urlAlias?.trim()
+    console.log('===', url)
 
     if (!url || !url.startsWith('http')) {
       return reply.status(400).send({ error: '유효하지 않은 URL 입니다.' })

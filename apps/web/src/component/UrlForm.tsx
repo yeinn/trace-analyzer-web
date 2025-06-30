@@ -12,17 +12,20 @@ const UrlForm = ({ onAdd }: UrlFormProps) => {
     // 추가 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
+        setValidMsg('')
 
         const newValue = urlVal.trim()
 
-        if (newValue) {
-            onAdd(newValue, aliasVal)
-            setUrlVal('')
-            setValidMsg('')
-            setAliasVal('')
-        } else {
-            setValidMsg('값을 입력하지 않았습니다.')
+        if (newValue.length === 0) {
+            return setValidMsg('값을 입력하지 않았습니다.')
+
+        } else if (!newValue.startsWith('http')) {
+            return setValidMsg('http로 시작하는 도메인 주소를 입력하세요.')
         }
+
+        onAdd(newValue, aliasVal)
+        setUrlVal('')
+        setAliasVal('')
     }
 
     return (

@@ -18,7 +18,7 @@ const UrlList = ({ listData, onDelete }: UrlListProps) => {
         <ul>
             {listData.map(({ id, urlAias, url }) => (
                 <li key={id}>
-                    {urlAias !== '' && `[${urlAias}]`}
+                    {urlAias?.length > 1 && `[${urlAias}]`}
                     <a href={url}>{url}</a>
                     <button onClick={() => onDelete(id)}>삭제</button>
                 </li>
