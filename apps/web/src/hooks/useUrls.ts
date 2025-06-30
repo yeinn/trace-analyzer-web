@@ -10,7 +10,7 @@ type UrlEntry = {
 }
 
 export const useUrls = () => {
-  const { readFetcher, createFetcher, updateFetcher, deleteFetcher } = useApiHandler();
+  const { readFetcher, createFetcher, deleteFetcher } = useApiHandler();
   const [data, setData] = useState<UrlEntry[]>([])
 
   //url 조회
@@ -43,7 +43,7 @@ export const useUrls = () => {
 
   //url 삭제
   const remove = async (id: string) => {
-    const res = await deleteFetcher<any>(API_URLS.urls.delete, id)
+    const res = await deleteFetcher<any>(API_URLS.urls.delete, { id })
 
     getUrls()
     return res
