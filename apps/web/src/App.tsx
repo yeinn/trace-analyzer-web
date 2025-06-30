@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
-import Error404 from "./common/pages/ErrorPage"
+import Error404 from "@/common/pages/ErrorPage"
 
 const App = () => {
     return (

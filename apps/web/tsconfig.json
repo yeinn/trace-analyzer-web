@@ -17,6 +17,9 @@
       ],
       "@common/*": [
         "src/common/*"
+      ],
+      "@component/*": [
+        "src/component/*"
       ]
     }
   },

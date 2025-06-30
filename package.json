@@ -4,10 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"vite"
+    "dev:fe": "pnpm --filter ./apps/web run dev",
+    "dev:be": "pnpm --filter ./apps/server run dev",
+    "dev": "concurrently \"pnpm dev:fe\" \"pnpm dev:be\"",
+    "build:fe": "pnpm --filter ./apps/web run build",
+    "build:be": "pnpm --filter ./apps/server run build",
+    "build": "concurrently \"pnpm build:fe\" \"pnpm build:be\""
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "packageManager": "pnpm@10.11.0"
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
 }

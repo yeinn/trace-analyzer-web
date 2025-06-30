@@ -33,4 +33,22 @@ export const urlsRoutes = async (server: FastifyInstance) => {
 
     return { success: true, entry: newEntry }
   })
+
+  server.post('/urls/delete', async (req, reply) => {
+    const body = req.body as { id: string }
+    const id = body.id
+
+    if (!id) {
+      return reply.status(400).send({ error: 'ID가 필요합니다.' })
+    }
+
+    const index = urls.findIndex(entry => entry.id === id)
+    if (index === -1) {
+      return reply.status(404).send({ error: '해당 ID를 가진 URL이 없습니다.' })
+    }
+
+    urls.splice(index, 1)
+
+    return { success: true }
+  })
 }

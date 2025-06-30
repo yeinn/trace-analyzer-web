@@ -42,10 +42,11 @@ export const useUrls = () => {
   }
 
   //url 삭제
-  const remove = (id: string) => {
-    const updateData = data.filter((entry) => entry.id !== id)
+  const remove = async (id: string) => {
+    const res = await deleteFetcher<any>(API_URLS.urls.delete, id)
 
     getUrls()
+    return res
   }
 
   //init
