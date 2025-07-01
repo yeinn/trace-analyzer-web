@@ -1,0 +1,31 @@
+{
+  "name": "Dev Container with Chrome",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.microsoft.com/devcontainers/features/chrome:latest": {}
+  },
+  "appPort": [
+    9222
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.js-debug"
+      ]
+    }
+  },
+  "forwardPorts": [
+    9222
+  ],
+  "portsAttributes": {
+    "9222": {
+      "label": "Chrome Debug Port"
+    }
+  },
+  "postCreateCommand": [
+    "sleep 5", // 컨테이너 초기화 대기
+    "google-chrome --remote-debugging-port=9222 --no-sandbox --user-data-dir=/tmp/chrome-user-data"
+  ]
+}
